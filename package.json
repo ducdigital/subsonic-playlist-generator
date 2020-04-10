@@ -1,0 +1,13 @@
+{
+  "name": "subsonic-export",
+  "version": "0.0.1",
+  "description": "Generate playable playlist from subsonic",
+  "main": "index.js",
+  "author": "DucDigital",
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "m3u": "^0.0.2",
+    "subsonicjs": "https://github.com/ducdigital/subsonicjs.git#add-token-param"
+  }
+}
