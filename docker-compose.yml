@@ -1,0 +1,10 @@
+version: "3.7"
+services:
+  web:
+    env_file:
+      - .env
+    container_name: subsonic_playlist_generator-web
+    build: .
+    ports:
+      - ${PORT}:80
+    restart: always

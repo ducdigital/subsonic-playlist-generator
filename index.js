@@ -5,8 +5,6 @@ const {
   SUBSONIC_TOKEN,
   SUBSONIC_SALT,
   SUBSONIC_USER,
-  PORT = 8089,
-  HOST = '0.0.0.0',
 } = process.env;
 
 const m3u = require('m3u')
@@ -28,7 +26,9 @@ async function generatePlaylist () {
 
 const server = http.createServer(function(req, res) {
   generatePlaylist().then(m3uPlaylist => {
-    res.writeHead(200);
+    res.writeHead(200,{
+      'Content-Type': 'application/x-mpegURL; charset=utf-8'
+    });
     console.log('Generated Playlist:');
     console.log(m3uPlaylist);
     console.log(`Generated at: ${new Date()}`);
@@ -36,6 +36,6 @@ const server = http.createServer(function(req, res) {
   })
 });
 
-server.listen(PORT, HOST, () => {
-  console.log(`Server started on http://${HOST}:${PORT}`);
+server.listen(80, '0.0.0.0', () => {
+  console.log(`Server started on http://0.0.0.0:80`);
 });
